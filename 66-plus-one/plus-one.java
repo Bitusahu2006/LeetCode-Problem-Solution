@@ -2,7 +2,8 @@ class Solution {
     public int[] plusOne(int[] digits) {
 
         // Right se left traverse
-        for (int i = digits.length - 1; i >= 0; i--) {
+        int lastNum=digits.length - 1;
+        for (int i = lastNum; i >= 0; i--) {
 
             // Agar digit 9 nahi hai
             if (digits[i] < 9) {
