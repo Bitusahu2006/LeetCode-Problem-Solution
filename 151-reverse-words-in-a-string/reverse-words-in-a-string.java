@@ -1,32 +1,50 @@
+
 class Solution {
     public String reverseWords(String s) {
-        StringBuilder sb=new StringBuilder();
-        int n=s.length();
-        int i=n-1;
-        while(i>=0){
-            while(i>=0 && s.charAt(i)==' '){
+        // Answer store karne ke liye StringBuilder
+        StringBuilder ans = new StringBuilder();
+
+        // Last index se traversal start karenge
+        int i = s.length() - 1;
+
+        while (i >= 0) {
+
+            // Trailing spaces ko remove/skip karo
+            while (i >= 0 && s.charAt(i) == ' ') {
                 i--;
             }
-            if(i<0){
+
+            // Agar string khatam ho gayi, loop stop
+            if (i < 0) {
                 break;
             }
-            int j=i;
 
-            while(j>=0 && s.charAt(j)!=' '){
+            // Word ke end ka index store karo
+            int j = i;
+
+            // Word ke start tak left move karo
+            while (j >= 0 && s.charAt(j) != ' ') {
                 j--;
             }
-            sb.append(s.substring(j+1, i+1));
 
-            while(j>=0 && s.charAt(j)==' '){
+            // Word ko extract karke answer mein add karo
+            ans.append(s.substring(j + 1, i + 1));
+
+            // Agar pichhe spaces hain, unhe skip karo
+            while (j >= 0 && s.charAt(j) == ' ') {
                 j--;
             }
-            if(j>=0){
-                sb.append(' ');
+
+            // Agla word add karne se pehle space lagao
+            if (j >= 0) {
+                ans.append(' ');
             }
-            i=j;
 
-
+            // Agle word ki taraf move karo
+            i = j;
         }
-        return sb.toString();
+
+        // Final reversed sentence return karo
+        return ans.toString();
     }
 }
